@@ -44,3 +44,13 @@
   
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
+.bar {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-flow: column;
+
+    border: 1px solid black;
+    gap: 25px;
+    padding: 15px;
+}
