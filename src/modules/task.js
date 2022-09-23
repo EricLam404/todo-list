@@ -16,7 +16,7 @@ function task_name(name){
     let task_name = document.createElement("input");
     task_name.setAttribute("type", "text");
     task_name.classList.add('name');
-    
+
     task_name.value = name;
 
     return task_name;
@@ -24,7 +24,6 @@ function task_name(name){
 
 function priority(level = "low"){
     let button = document.createElement("button");
-
     button.classList.add("dropbtn");
     button.textContent = level;
 
@@ -53,16 +52,29 @@ function dropdown(){
 
     dropdown_box.append(low, medium, high);
 
+    add_change_priority(dropdown_box);
+
+
     return dropdown_box;
 }
 
 function add_dropdown_click(button){
     button.addEventListener('click', () => {
-        console.log("clicked")
         let dropdown_box = document.querySelector('.dropdown-content');
 
         dropdown_box.classList.toggle("show");
     });
+}
+
+function add_change_priority(dropdown_box){
+    for(let i = 0; i < 3; i++){
+        dropdown_box.children[i].addEventListener("click", (e) => {
+            let button = document.querySelector('.dropbtn');
+            button.textContent = e.target.textContent;
+
+            button.appendChild(dropdown());
+        });
+    }
 }
 
 function due_date(date){
