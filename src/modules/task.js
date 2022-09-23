@@ -2,7 +2,7 @@ function createTask(){
     let task_bar = document.createElement("div");
     task_bar.classList.add("bar");
 
-    task_bar.append(task_name("Eat"), checkbox(),priority(), due_date("09/27/1977"), delete_button());
+    task_bar.append(task_name("Eat"), priority(), due_date("2022-07-22"), delete_button(), checkbox());
     return task_bar;
 }
 function checkbox(){
@@ -14,6 +14,7 @@ function checkbox(){
 
 function task_name(name){
     let task_name = document.createElement("div");
+    task_name.classList.add('name');
     task_name.textContent = name;
 
     return task_name;
@@ -63,8 +64,15 @@ function add_dropdown_click(button){
 }
 
 function due_date(date){
-    let due_date = document.createElement('div');
-    due_date.textContent = date;
+    let due_date = document.createElement('input');
+    due_date.setAttribute("type", "date");
+    due_date.value = date;
+
+    /*
+    due_date.addEventListener('change', () => {
+        console.log(due_date.value);
+    });
+    */
 
     return due_date;
 }

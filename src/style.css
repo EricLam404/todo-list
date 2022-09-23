@@ -54,3 +54,19 @@
     gap: 25px;
     padding: 15px;
 }
+
+.bar .name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bar .delete {
+    background-color: red;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    
+    border: none;
+    border-radius: 15px;
+}
