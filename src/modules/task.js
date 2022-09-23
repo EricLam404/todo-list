@@ -13,9 +13,11 @@ function checkbox(){
 }
 
 function task_name(name){
-    let task_name = document.createElement("div");
+    let task_name = document.createElement("input");
+    task_name.setAttribute("type", "text");
     task_name.classList.add('name');
-    task_name.textContent = name;
+    
+    task_name.value = name;
 
     return task_name;
 }
