@@ -97,6 +97,12 @@ function delete_button(){
     delete_button.classList.add("delete");
     delete_button.textContent = "delete";
 
+    delete_button.addEventListener('click', (e) => {
+        let body = document.body;
+        
+        body.removeChild(e.target.parentNode)
+    });
+
     return delete_button;
 }
 export default createTask;

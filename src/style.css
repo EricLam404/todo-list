@@ -79,3 +79,7 @@ input {
     border: none;
     border-radius: 15px;
 }
+
+.bar .delete:focus, .bar .delete:hover{
+    background-color: rgb(156, 11, 11);
+}
