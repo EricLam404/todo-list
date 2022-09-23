@@ -1,9 +1,10 @@
 import './style.css';
 import createTask from "./modules/task";
+import createProject from './modules/project';
 
-document.body.appendChild(createTask());
+document.body.appendChild(createProject());
+
 add_not_clicked();
-
 
 function add_not_clicked(){
     window.onclick = function(event) {
