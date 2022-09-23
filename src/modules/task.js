@@ -60,7 +60,7 @@ function dropdown(){
 
 function add_dropdown_click(button){
     button.addEventListener('click', () => {
-        let dropdown_box = document.querySelector('.dropdown-content');
+        let dropdown_box = button.lastChild;
 
         dropdown_box.classList.toggle("show");
     });
@@ -69,7 +69,7 @@ function add_dropdown_click(button){
 function add_change_priority(dropdown_box){
     for(let i = 0; i < 3; i++){
         dropdown_box.children[i].addEventListener("click", (e) => {
-            let button = document.querySelector('.dropbtn');
+            let button = dropdown_box.parentNode;
             button.textContent = e.target.textContent;
 
             button.appendChild(dropdown());
@@ -98,9 +98,9 @@ function delete_button(){
     delete_button.textContent = "delete";
 
     delete_button.addEventListener('click', (e) => {
-        let body = document.body;
+        let container = document.querySelector('.container');
         
-        body.removeChild(e.target.parentNode)
+        container.removeChild(e.target.parentNode)
     });
 
     return delete_button;

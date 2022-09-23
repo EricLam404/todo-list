@@ -4,7 +4,9 @@ function createProject(){
     let container = document.createElement('div');
     container.classList.add('container');
 
-    container.append(task_button(), createTask());
+    container.append(createTask());
+
+    document.body.appendChild(task_button());
 
     return container;
 }
