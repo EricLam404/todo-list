@@ -1,11 +1,20 @@
 import createTask from "./task";
 
 function createProject(){
-    document.body.appendChild(task_button());
+    document.body.appendChild(add_task_button());
     let container = document.createElement('div');
     container.classList.add('container');
 
     container.append(createTask("Eat", "high", "2022-08-19"));
+
+    return container;
+}
+
+function add_task_button(){
+    let container = document.createElement('div');
+    container.classList.add('add-btn-container');
+
+    container.append(task_button(), create_task_popup());
 
     return container;
 }
@@ -15,9 +24,8 @@ function task_button(){
 
     button.textContent = "Add Task";
     button.classList.add('add');
-    button.append(create_task_popup());
 
-    button.addEventListener('click', show_create_task_popup());
+    button.addEventListener('click', show_create_task_popup);
 
     return button;
 }
@@ -81,8 +89,10 @@ function create_task_popup(){
     return popup;
 }
 
-function show_create_task_popup(){
-    
+function show_create_task_popup(e){
+    let form = e.target.parentNode.lastChild;
+
+    form.classList.add('show');
 }
 
 function submit_button(){
@@ -100,11 +110,14 @@ function close_buttton(){
     button.textContent = "Close";
     button.setAttribute('type', 'button');
 
-    button.addEventListener('click', () => {
-        console.log('close');
-    });
+    button.addEventListener('click', close_form);
 
     return button;
+}
+
+function close_form(e){
+    let form = e.target.parentNode.parentNode;
+    form.classList.remove('show');
 }
 
 function add_task(e){
@@ -115,6 +128,14 @@ function add_task(e){
     let container = document.body.querySelector('.container');
     container.append(createTask(formProps.name, formProps.priority, formProps.date));
     console.log(formProps);
+
+    reset_form();
+}
+
+function reset_form(){
+    let form = document.querySelector('.form-container');
+
+    form.reset();
 }
 
 function add_submit(form){
