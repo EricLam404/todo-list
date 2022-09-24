@@ -1,8 +1,10 @@
+import deleteIcon from './imgs/delete.svg';
+
 function createTask(name, level, date){
     let task_bar = document.createElement("li");
     task_bar.classList.add("bar");
 
-    task_bar.append(task_name(name), priority(level), due_date(date), delete_button(), checkbox());
+    task_bar.append(checkbox(), task_name(name), priority(level), due_date(date), delete_button());
     return task_bar;
 }
 
@@ -93,13 +95,13 @@ function due_date(date){
 }
 
 function delete_button(){
-    let delete_button = document.createElement("button");
+    let delete_button = document.createElement("img");
 
     delete_button.classList.add("delete");
-    delete_button.textContent = "delete";
+    delete_button.src = deleteIcon;
 
     delete_button.addEventListener('click', (e) => {
-        let container = document.querySelector('.container');
+        let container = document.querySelector('.task-container');
         
         container.removeChild(e.target.parentNode)
     });
