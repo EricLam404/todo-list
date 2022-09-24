@@ -1,10 +1,11 @@
-function createTask(){
+function createTask(name, level, date){
     let task_bar = document.createElement("div");
     task_bar.classList.add("bar");
 
-    task_bar.append(task_name("Eat"), priority(), due_date("2022-07-22"), delete_button(), checkbox());
+    task_bar.append(task_name(name), priority(level), due_date(date), delete_button(), checkbox());
     return task_bar;
 }
+
 function checkbox(){
     let box = document.createElement("input");
     box.setAttribute("type", "checkbox");
