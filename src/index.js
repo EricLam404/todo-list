@@ -1,8 +1,15 @@
 import './style.css';
-import createTask from "./modules/task";
 import createProject from './modules/project';
+import createSidebar from './modules/sidebar';
+import createHeader from './modules/header';
 
-document.body.appendChild(createProject());
+
+let mainContainer = document.createElement('div');
+mainContainer.classList.add('main-container');
+
+mainContainer.append(createHeader(), createSidebar(), createProject());
+
+document.body.append(mainContainer);
 
 add_not_clicked();
 

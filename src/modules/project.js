@@ -1,10 +1,15 @@
 import createTask from "./task";
+import addIcon from "./imgs/add.svg";
 
 function createProject(){
     let container = document.createElement('div');
     container.classList.add('container');
 
-    container.append(createTask("Eat", "high", "2022-08-19"), add_task_button());
+    let tasks = document.createElement('div');
+    tasks.classList.add('task-container');
+
+    tasks.append(createTask("Eat", "high", "2022-08-19"), add_task_button());
+    container.append(tasks);
 
     return container;
 }
@@ -19,14 +24,19 @@ function add_task_button(){
 }
 
 function task_button(){
-    let button = document.createElement('button');
+    let add_button = document.createElement('div');
 
+    let add = document.createElement('img');
+    add.src = addIcon;
+    let button = document.createElement('div');
     button.textContent = "Add Task";
-    button.classList.add('add');
 
-    button.addEventListener('click', show_create_task_popup);
+    add_button.classList.add('add');
+    add_button.append(add, button);
 
-    return button;
+    add_button.addEventListener('click', show_create_task_popup, true);
+
+    return add_button;
 }
 
 function create_task_popup(){
@@ -89,7 +99,7 @@ function create_task_popup(){
 }
 
 function show_create_task_popup(e){
-    let form = e.target.parentNode.lastChild;
+    let form = document.querySelector(".form-popup");
 
     form.classList.add('show');
 }
@@ -124,7 +134,7 @@ function add_task(e){
     let formData = new FormData(e.target);
     let formProps = Object.fromEntries(formData);
 
-    let container = document.querySelector('.container');
+    let container = document.querySelector('.task-container');
     let add_button = document.querySelector('.add-btn-container');
     container.insertBefore(createTask(formProps.name, formProps.priority, formProps.date), add_button);
     console.log(formProps);

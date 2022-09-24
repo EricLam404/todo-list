@@ -1,15 +1,79 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 input {
     border: none;
 }
 
+li {
+    list-style: none;
+}
+
+img {
+    height: 20px;
+    width: 20px;
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr, 4fr;
+    grid-template-rows: 1fr 8fr;
+}
+
+.header {
+    background-color: #6ec0d5;
+    padding: calc(15px + 2vh) 15px;
+    font-weight: bolder;
+    font-size: 2rem;
+    color: white;
+
+    grid-column: 1 / 3;
+}
+
+.sidebar {
+    grid-row: 2 / 4;
+    padding: 15px;
+    background-color: #eff8fb;
+}
+
+.container {
+    grid-row: 2 / 4;
+
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+}
 .form-popup {
-    display: block;
-    margin: 30px;
+    display: none;
+    margin: 10px 0px;
+    border: 1px solid #6dc1d6;
+    border-radius: 8px;
+    padding: 15px;
 }
 
 .form-container {
     display: flex;
     gap: 5px;
+}
+
+.add-btn-container {
+    opacity: 60%;
+}
+
+.add-btn-container:hover {
+    opacity: 100%;
+}
+
+.add {
+    display: flex;
+    gap: 10px;
+    margin: 15px 10px;
+    cursor: pointer;
 }
 
 /* Dropdown Button */
@@ -73,7 +137,9 @@ input {
     grid-template-columns: 1fr;
     grid-auto-flow: column;
 
-    border: 1px solid black;
+    border-style: solid;
+    border-width: 2px 0;
+    border-color: #dff1f6;
     gap: 25px;
     padding: 15px;
 
