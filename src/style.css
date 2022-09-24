@@ -12,6 +12,11 @@ img {
     width: 15px;
 }
 
+button {
+    border: none;
+    background: none;
+}
+
 .main-container {
     display: grid;
     grid-template-columns: 1fr 4fr;
@@ -54,7 +59,15 @@ img {
 
 .form-container {
     display: flex;
-    gap: 5px;
+    gap: 15px;
+    align-items: center;
+}
+
+.form-task-name {flex: 1;}
+
+.close img, .submit img{
+    width: 25px;
+    height: 25px;
 }
 
 .add-btn-container {

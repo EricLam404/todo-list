@@ -1,5 +1,7 @@
 import createTask from "./task";
 import addIcon from "./imgs/add.svg";
+import closeIcon from "./imgs/close.svg";
+import submitIcon from "./imgs/submit.svg";
 
 function createProject(){
     let container = document.createElement('div');
@@ -54,6 +56,7 @@ function create_task_popup(){
     name.setAttribute('type', 'text');
     name.setAttribute('placeholder', 'Enter task name');
     name.setAttribute('name', 'name');
+    name.classList.add('form-task-name')
     name.required = true;
 
     let priority_label = document.createElement('label');
@@ -107,7 +110,10 @@ function show_create_task_popup(e){
 function submit_button(){
     let button = document.createElement('button');
     button.classList.add('submit');
-    button.textContent = "Submit";
+
+    let icon = document.createElement('img');
+    icon.src = submitIcon;
+    button.appendChild(icon);
     button.setAttribute('type', 'submit');
 
     return button;
@@ -116,7 +122,10 @@ function submit_button(){
 function close_buttton(){
     let button = document.createElement('button');
     button.classList.add('close');
-    button.textContent = "Close";
+
+    let icon = document.createElement('img');
+    icon.src = closeIcon;
+    button.appendChild(icon);
     button.setAttribute('type', 'button');
 
     button.addEventListener('click', close_form);
@@ -125,7 +134,7 @@ function close_buttton(){
 }
 
 function close_form(e){
-    let form = e.target.parentNode.parentNode;
+    let form = e.target.parentNode.parentNode.parentNode;
     form.classList.remove('show');
 }
 
