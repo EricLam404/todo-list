@@ -1,17 +1,16 @@
 import createTask from "./task";
 
 function createProject(){
-    document.body.appendChild(add_task_button());
     let container = document.createElement('div');
     container.classList.add('container');
 
-    container.append(createTask("Eat", "high", "2022-08-19"));
+    container.append(createTask("Eat", "high", "2022-08-19"), add_task_button());
 
     return container;
 }
 
 function add_task_button(){
-    let container = document.createElement('div');
+    let container = document.createElement('li');
     container.classList.add('add-btn-container');
 
     container.append(task_button(), create_task_popup());
@@ -125,8 +124,9 @@ function add_task(e){
     let formData = new FormData(e.target);
     let formProps = Object.fromEntries(formData);
 
-    let container = document.body.querySelector('.container');
-    container.append(createTask(formProps.name, formProps.priority, formProps.date));
+    let container = document.querySelector('.container');
+    let add_button = document.querySelector('.add-btn-container');
+    container.insertBefore(createTask(formProps.name, formProps.priority, formProps.date), add_button);
     console.log(formProps);
 
     reset_form();

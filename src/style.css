@@ -3,7 +3,13 @@ input {
 }
 
 .form-popup {
-    display: none;
+    display: block;
+    margin: 30px;
+}
+
+.form-container {
+    display: flex;
+    gap: 5px;
 }
 
 /* Dropdown Button */

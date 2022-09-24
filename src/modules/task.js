@@ -1,5 +1,5 @@
 function createTask(name, level, date){
-    let task_bar = document.createElement("div");
+    let task_bar = document.createElement("li");
     task_bar.classList.add("bar");
 
     task_bar.append(task_name(name), priority(level), due_date(date), delete_button(), checkbox());
