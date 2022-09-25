@@ -27,7 +27,10 @@ function task_name(name){
 
 function priority(level = "low"){
     let button = document.createElement("button");
+    let priority = "priority-" + level;
+
     button.classList.add("dropbtn");
+    button.classList.add(priority);
     button.textContent = level;
 
     button.append(dropdown());
@@ -73,6 +76,11 @@ function add_change_priority(dropdown_box){
     for(let i = 0; i < 3; i++){
         dropdown_box.children[i].addEventListener("click", (e) => {
             let button = dropdown_box.parentNode;
+            let priority = "priority-" + e.target.textContent;
+
+            button.classList.remove(button.classList[1])
+            button.classList.add(priority);
+            
             button.textContent = e.target.textContent;
 
             button.appendChild(dropdown());

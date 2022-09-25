@@ -86,7 +86,6 @@ button {
 
 .dropbtn {
     background-color: white;
-    color: #6ec0d5;
     padding: 6px;
     font-size: 1rem;
     border: none;
@@ -96,17 +95,22 @@ button {
     width: 90px;
 }
 
-.dropbtn .name {
-    background-color: rgba(0,0,0,0);
-    color: white;
-    border: none;
-}
-
 .dropbtn:hover, .dropbtn:focus {
     background-color: #6ec0d5;
-    color: white;
 }
-  
+
+.priority-low {
+    color: green;
+}
+
+.priority-medium {
+    color: #DB4914;
+}
+
+.priority-high {
+    color: red;
+}
+
 .dropdown{
     position: relative;
     display: inline-block;

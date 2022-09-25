@@ -134,7 +134,7 @@ function close_buttton(){
 }
 
 function close_form(e){
-    let form = e.target.parentNode.parentNode.parentNode;
+    let form = document.querySelector('.form-popup');
     form.classList.remove('show');
 }
 
@@ -146,9 +146,9 @@ function add_task(e){
     let container = document.querySelector('.task-container');
     let add_button = document.querySelector('.add-btn-container');
     container.insertBefore(createTask(formProps.name, formProps.priority, formProps.date), add_button);
-    console.log(formProps);
 
     reset_form();
+    close_form();
 }
 
 function reset_form(){
