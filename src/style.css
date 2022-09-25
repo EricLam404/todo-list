@@ -90,25 +90,37 @@ button {
     font-size: 1rem;
     border: none;
     cursor: pointer;
-
-    border: 1px solid #6ec0d5;
     width: 90px;
-}
-
-.dropbtn:hover, .dropbtn:focus {
-    background-color: #6ec0d5;
 }
 
 .priority-low {
     color: green;
+    border: 1px solid green;
 }
 
 .priority-medium {
-    color: #DB4914;
+    color: orange;
+    border: 1px solid orange;
 }
 
 .priority-high {
     color: red;
+    border: 1px solid red;
+}
+
+.priority-low:hover {
+    background-color: green;
+    color: white;
+}
+
+.priority-medium:hover {
+    background-color: orange;
+    color: white;
+}
+
+.priority-high:hover {
+    background-color: red;
+    color: white;
 }
 
 .dropdown{

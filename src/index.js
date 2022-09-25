@@ -1,8 +1,8 @@
 import './style.css';
-import createProject from './modules/project';
+import createProject from './modules/projectDomEvents';
 import createSidebar from './modules/sidebar';
 import createHeader from './modules/header';
-
+import load from './modules/load'
 
 let mainContainer = document.createElement('div');
 mainContainer.classList.add('main-container');
@@ -12,6 +12,8 @@ mainContainer.append(createHeader(), createSidebar(), createProject());
 document.body.append(mainContainer);
 
 add_not_clicked();
+load()
+
 
 function add_not_clicked(){
     window.onclick = function(event) {
