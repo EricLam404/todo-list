@@ -88,9 +88,9 @@ button {
     background-color: white;
     padding: 6px;
     font-size: 1rem;
-    border: none;
     cursor: pointer;
     width: 90px;
+    text-decoration: none;
 }
 
 .priority-low {
@@ -166,3 +166,7 @@ button {
     flex: 1;
 
 }
+
+.done {opacity: 40%;}
+
+.done > .name {text-decoration: line-through;}

@@ -5,14 +5,25 @@ function createTask(task){
     task_bar.classList.add("bar");
     task_bar.setAttribute('id', task._id);
 
-    task_bar.append(checkbox(), task_name(task._name), priority(task._priority), due_date(task._date), delete_button());
+    task_bar.append(checkbox(task._done), task_name(task._name), priority(task._priority), due_date(task._date), delete_button());
     return task_bar;
 }
 
-function checkbox(){
+function checkbox(done){
     let box = document.createElement("input");
     box.setAttribute("type", "checkbox");
-
+    box.checked = done;
+    
+    box.addEventListener('change', () => {
+        let bar = box.parentNode;
+        if(box.checked){
+            bar.classList.add('done');
+        }
+        else {
+            bar.classList.remove('done');
+        }
+        editDone(bar.id, box.checked);
+    });
     return box;
 }
 
@@ -174,6 +185,21 @@ function editDate(id, change){
     localStorage.setItem('tasks', JSON.stringify(tasks))
 }
 
+function editDone(id, change){
+    let tasks = [];
+    if(localStorage.getItem('tasks')){    
+        tasks = JSON.parse(localStorage.getItem('tasks')) 
+    }
+
+    for( let i = 0; i < tasks.length; i++){
+        if(tasks[i]._id == id){
+            tasks[i]._done = change;
+            console.log(tasks[i]);
+        }
+    }
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+}
+
 function remove(id){
     let tasks = [];
     if(localStorage.getItem('tasks')){    
@@ -187,4 +213,5 @@ function remove(id){
     }
     localStorage.setItem('tasks', JSON.stringify(tasks))
 }
+
 export default createTask;

@@ -1,10 +1,11 @@
 class Task{
-    constructor(name, priority, date, project = "home", id) {
+    constructor(name, priority, date, project = "home", id, done) {
         this._name = name;
         this._priority = priority;
         this._date = date;
         this._project = project;
         this._id = id;
+        this._done = done;
     }
 
     set name(newName){
@@ -27,6 +28,10 @@ class Task{
         this._id = id;
     }
 
+    set done(done){
+        this._done = done;
+    }
+
     get name(){
         return this._name;
     }
@@ -45,6 +50,10 @@ class Task{
 
     get id(){
         return this._id;
+    }
+
+    get done(){
+        return this._done;
     }
 }
 
