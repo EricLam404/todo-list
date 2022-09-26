@@ -26,9 +26,53 @@ function createProject(){
         tasks.append(createTask(demoTasks[i]));
     }
     tasks.append(add_task_button());
-    container.append(tasks);
+    container.append(sort_container(), tasks);
 
     return container;
+}
+
+function sort_container(){
+    let container = document.createElement('div');
+    container.textContent = "Sort by Date";
+    container.classList.add("sort");
+
+    container.addEventListener('click', () => {
+        let tasks = document.querySelectorAll(".bar");
+        let tasksArr = Array.from(tasks);
+        let container = document.querySelector('.task-container');
+
+        if(container.classList[1] === "descending"){
+            container.classList.remove("descending");
+            container.classList.add("ascending");
+            tasksArr.sort(compareDatesDescending);
+        }else{
+            container.classList.remove("ascending");
+            container.classList.add("descending");
+            tasksArr.sort(compareDatesAscending);
+        }
+
+        removeChildElements();
+        for(let i = 0; i < tasksArr.length; i++){
+            container.append(tasksArr[i]);
+        }
+        container.append(add_task_button());
+    }); 
+
+    return container;
+}
+
+function compareDatesAscending(a, b){
+    let aDate = a.querySelector('.date').value;
+    let bDate = b.querySelector('.date').value;
+
+    return aDate < bDate ? -1 : aDate > bDate ? 1 : 0;
+}
+
+function compareDatesDescending(a, b){
+    let aDate = a.querySelector('.date').value;
+    let bDate = b.querySelector('.date').value;
+
+    return aDate < bDate ? 1 : aDate > bDate ? -1 : 0;
 }
 
 function add_task_button(){
@@ -179,5 +223,12 @@ function reset_form(){
 
 function add_submit(form){
     form.addEventListener('submit', add_task);
+}
+
+function removeChildElements(){
+    let element = document.querySelector(".task-container");
+    while (element.firstChild) {
+        element.removeChild(element.firstChild);
+    }
 }
 export default createProject;

@@ -23,6 +23,7 @@ button {
     grid-template-rows: 1fr 8fr;
 }
 
+
 .header {
     background-color: #6ec0d5;
     padding: calc(15px + 2vh) 15px;
@@ -44,8 +45,16 @@ button {
     grid-row: 2 / 4;
 
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     margin: 15px;
+}
+
+.sort {
+    border: 1px solid #6dc1d6;
+    padding: 5px;
+    margin-bottom: 15px;
+    cursor: pointer;
 }
 
 .form-popup {

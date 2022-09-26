@@ -113,6 +113,7 @@ function add_change_priority(dropdown_box){
 function due_date(date){
     let due_date = document.createElement('input');
     due_date.setAttribute("type", "date");
+    due_date.classList.add('date');
     due_date.value = date;
 
     
