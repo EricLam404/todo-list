@@ -6,15 +6,6 @@ import createTask from "./taskDomEvents";
 import taskConstructor from "./task";
 import saveTask from "./storage";
 
-let _tasks = JSON.parse(localStorage.getItem('tasks'));
-let IDCount = _tasks ? (_tasks[_tasks.length - 1]._id + 1) : 1;
-let demoTasks = [];
-
-demoTasks.push(new taskConstructor("Clean the sink", "medium", "2022-09-28", "home", "-1"));
-demoTasks.push(new taskConstructor("Wash the laundry", "medium", "2022-09-25", "home", "-1"));
-demoTasks.push(new taskConstructor("Fix shower head", "high", "2022-10-01", "home", "-1"));
-demoTasks.push(new taskConstructor("Learn react", "high", "2022-10-05", "home", "-1"));
-
 function createProject(){
     let container = document.createElement('div');
     container.classList.add('container');
@@ -22,9 +13,6 @@ function createProject(){
     let tasks = document.createElement('div');
     tasks.classList.add('task-container');
 
-    for(let i = 0; i < demoTasks.length; i++){
-        tasks.append(createTask(demoTasks[i]));
-    }
     tasks.append(add_task_button());
     container.append(sort_container(), tasks);
 
@@ -205,8 +193,7 @@ function add_task(e){
     let container = document.querySelector('.task-container');
     let add_button = document.querySelector('.add-btn-container');
 
-    let newTask = new taskConstructor(formProps.name, formProps.priority, formProps.date, "home", IDCount);
-    IDCount++;
+    let newTask = new taskConstructor(formProps.name, formProps.priority, formProps.date, "home", uniqueId(), false);
 
     container.insertBefore(createTask(newTask), add_button);
     saveTask(newTask);
@@ -231,4 +218,11 @@ function removeChildElements(){
         element.removeChild(element.firstChild);
     }
 }
+
+function uniqueId(){
+    const dateString = Date.now().toString(36);
+    const randomness = Math.random().toString(36).substr(2);
+    return dateString + randomness;
+};
+
 export default createProject;

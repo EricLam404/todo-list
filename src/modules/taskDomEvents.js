@@ -4,6 +4,9 @@ function createTask(task){
     let task_bar = document.createElement("li");
     task_bar.classList.add("bar");
     task_bar.setAttribute('id', task._id);
+    if(task._done){
+        task_bar.classList.add('done');
+    }
 
     task_bar.append(checkbox(task._done), task_name(task._name), priority(task._priority), due_date(task._date), delete_button());
     return task_bar;
@@ -13,6 +16,7 @@ function checkbox(done){
     let box = document.createElement("input");
     box.setAttribute("type", "checkbox");
     box.checked = done;
+
     
     box.addEventListener('change', () => {
         let bar = box.parentNode;
@@ -145,74 +149,90 @@ function delete_button(){
 }
 
 function editName(id, change){
-    let tasks = [];
-    if(localStorage.getItem('tasks')){    
-        tasks = JSON.parse(localStorage.getItem('tasks')) 
+    let projects = []
+    if(localStorage.getItem('project')){    
+        projects = JSON.parse(localStorage.getItem('project')); 
     }
 
-    for( let i = 0; i < tasks.length; i++){
-        if(tasks[i]._id == id){
-            tasks[i]._name = change;
+    for(let i = 0; i < projects.length; i++){
+        for(let j = 0; j < projects[i].length; j++){
+            if(projects[i][j]._id == id){
+                projects[i][j]._name = change;
+            }
         }
     }
-    localStorage.setItem('tasks', JSON.stringify(tasks))
+    localStorage.setItem('project', JSON.stringify(projects));
 }
 
 function editPriority(id, change){
-    let tasks = [];
-    if(localStorage.getItem('tasks')){    
-        tasks = JSON.parse(localStorage.getItem('tasks')) 
+    let projects = []
+    if(localStorage.getItem('project')){    
+        projects = JSON.parse(localStorage.getItem('project')); 
     }
 
-    for( let i = 0; i < tasks.length; i++){
-        if(tasks[i]._id == id){
-            tasks[i]._priority = change;
+    for(let i = 0; i < projects.length; i++){
+        for(let j = 0; j < projects[i].length; j++){
+            if(projects[i][j]._id == id){
+                projects[i][j]._priority = change;
+            }
         }
     }
-    localStorage.setItem('tasks', JSON.stringify(tasks))
+    localStorage.setItem('project', JSON.stringify(projects));
 }
 
 function editDate(id, change){
-    let tasks = [];
-    if(localStorage.getItem('tasks')){    
-        tasks = JSON.parse(localStorage.getItem('tasks')) 
+    let projects = []
+    if(localStorage.getItem('project')){    
+        projects = JSON.parse(localStorage.getItem('project')); 
     }
 
-    for( let i = 0; i < tasks.length; i++){
-        if(tasks[i]._id == id){
-            tasks[i]._date = change;
+    for(let i = 0; i < projects.length; i++){
+        for(let j = 0; j < projects[i].length; j++){
+            if(projects[i][j]._id == id){
+                projects[i][j]._date = change;
+            }
         }
     }
-    localStorage.setItem('tasks', JSON.stringify(tasks))
+    localStorage.setItem('project', JSON.stringify(projects));
 }
 
 function editDone(id, change){
-    let tasks = [];
-    if(localStorage.getItem('tasks')){    
-        tasks = JSON.parse(localStorage.getItem('tasks')) 
+    let projects = []
+    if(localStorage.getItem('project')){    
+        projects = JSON.parse(localStorage.getItem('project')); 
     }
 
-    for( let i = 0; i < tasks.length; i++){
-        if(tasks[i]._id == id){
-            tasks[i]._done = change;
-            console.log(tasks[i]);
+    for(let i = 0; i < projects.length; i++){
+        for(let j = 0; j < projects[i].length; j++){
+            if(projects[i][j]._id == id){
+                projects[i][j]._done = change;
+            }
         }
     }
-    localStorage.setItem('tasks', JSON.stringify(tasks))
+    localStorage.setItem('project', JSON.stringify(projects));
 }
 
 function remove(id){
-    let tasks = [];
-    if(localStorage.getItem('tasks')){    
-        tasks = JSON.parse(localStorage.getItem('tasks')) 
+    let projects = []
+    if(localStorage.getItem('project')){    
+        projects = JSON.parse(localStorage.getItem('project')); 
     }
 
-    for( let i = 0; i < tasks.length; i++){
-        if(tasks[i]._id == id){
-            tasks.splice(i, 1);
+    for(let i = 0; i < projects.length; i++){
+        for(let j = 0; j < projects[i].length; j++){
+            if(projects[i][j]._id == id){
+                projects[i].splice(j, 1);
+            }
         }
     }
-    localStorage.setItem('tasks', JSON.stringify(tasks))
+
+    for(let j = 0; j < projects.length; j++){
+        if(projects[j].length == 0){
+            projects.splice(j, 1);
+        }
+    }
+
+    localStorage.setItem('project', JSON.stringify(projects));
 }
 
 export default createTask;

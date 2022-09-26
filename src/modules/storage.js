@@ -1,11 +1,24 @@
 function saveTask(task){
+    let project = task._project;
+    let projects = [];
     let tasks = [];
-    if(localStorage.getItem('tasks')){    
-        tasks = JSON.parse(localStorage.getItem('tasks')) 
+    let found = false
+
+    if(localStorage.getItem('project')){    
+        projects = JSON.parse(localStorage.getItem('project'));
     }
 
-    tasks.push(task);
-    localStorage.setItem('tasks', JSON.stringify(tasks))
+    for(let i = 0; i < projects.length; i++){
+        if(projects[i][0]._project === project){
+            projects[i].push(task);
+            found = true;
+        }
+    }
+    if(!found){
+        tasks.push(task);
+        projects.push(tasks);
+    }
+    localStorage.setItem('project', JSON.stringify(projects));
 }
 
 
