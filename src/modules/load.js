@@ -6,7 +6,7 @@ function load(){
     let add_button = document.querySelector('.add-btn-container');
 
     if(localStorage.getItem('tasks')){    
-        tasks = JSON.parse(localStorage.getItem('tasks')) 
+        tasks = JSON.parse(localStorage.getItem('tasks'));
     }
 
     for(let i = 0; i < tasks.length; i++){

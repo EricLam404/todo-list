@@ -6,7 +6,8 @@ import createTask from "./taskDomEvents";
 import taskConstructor from "./task";
 import saveTask from "./storage";
 
-let IDCount = 1;
+let _tasks = JSON.parse(localStorage.getItem('tasks'));
+let IDCount = _tasks ? (_tasks[_tasks.length - 1]._id + 1) : 1;
 let demoTasks = [];
 
 demoTasks.push(new taskConstructor("Clean the sink", "medium", "2022-09-28", "home", "-1"));
