@@ -14,7 +14,6 @@ function load(){
     if(localStorage.getItem('project')){    
         projects = JSON.parse(localStorage.getItem('project'));
     }
-    console.log(projects);
     projects.unshift(demoTasks);
 
     let container = document.querySelector('.task-container');

@@ -43,6 +43,17 @@ button {
     font-size: 1.5rem;
 }
 
+.project {
+    margin-left: 15px;
+    margin-top: 5px;
+    padding: 5px;
+}
+
+.project:hover {
+    cursor: pointer;
+    background-color: #e3eaef;
+}
+
 .home, .projects {
     margin: 15px;
     padding: 10px
