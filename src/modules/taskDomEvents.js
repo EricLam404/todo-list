@@ -1,4 +1,5 @@
 import deleteIcon from './imgs/delete.svg';
+import changeProjects from './changeProjects';
 
 function createTask(task){
     let task_bar = document.createElement("li");
@@ -8,7 +9,7 @@ function createTask(task){
         task_bar.classList.add('done');
     }
 
-    task_bar.append(checkbox(task._done), task_name(task._name), priority(task._priority), due_date(task._date), delete_button());
+    task_bar.append(checkbox(task._done), task_name(task._name), project(task._project), priority(task._priority), due_date(task._date), delete_button());
     return task_bar;
 }
 
@@ -44,6 +45,21 @@ function task_name(name){
     });
 
     return task_name;
+}
+
+function project(name){
+    let project = document.createElement("input");
+    project.setAttribute("type", "text");
+    project.classList.add('project-name');
+
+    project.value = name;
+
+    project.addEventListener('change', (e) => {
+        let id = project.parentNode.id;
+        editProject(id, project.value)
+    });
+
+    return project;
 }
 
 function priority(level){
@@ -142,6 +158,7 @@ function delete_button(){
         let id = bar.id;
         container.removeChild(bar);
         remove(id);
+        changeProjects();
     });
 
 
@@ -158,6 +175,22 @@ function editName(id, change){
         for(let j = 0; j < projects[i].length; j++){
             if(projects[i][j]._id == id){
                 projects[i][j]._name = change;
+            }
+        }
+    }
+    localStorage.setItem('project', JSON.stringify(projects));
+}
+
+function editProject(id, change){
+    let projects = []
+    if(localStorage.getItem('project')){    
+        projects = JSON.parse(localStorage.getItem('project')); 
+    }
+
+    for(let i = 0; i < projects.length; i++){
+        for(let j = 0; j < projects[i].length; j++){
+            if(projects[i][j]._id == id){
+                projects[i][j]._project = change;
             }
         }
     }

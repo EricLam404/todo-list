@@ -5,6 +5,7 @@ import submitIcon from "./imgs/submit.svg";
 import createTask from "./taskDomEvents";
 import taskConstructor from "./task";
 import saveTask from "./storage";
+import changeProjects from "./changeProjects";
 
 function createProject(){
     let container = document.createElement('div');
@@ -103,8 +104,18 @@ function create_task_popup(){
     name.setAttribute('type', 'text');
     name.setAttribute('placeholder', 'Enter task name');
     name.setAttribute('name', 'name');
-    name.classList.add('form-task-name')
+    name.classList.add('form-task-name');
     name.required = true;
+
+    let project_label = document.createElement('label');
+    project_label.setAttribute('for', 'name');
+    project_label.textContent = "Project Name";
+
+    let project = document.createElement('input');
+    project.setAttribute('type', 'text');
+    project.setAttribute('placeholder', 'Enter project name(optional)');
+    project.setAttribute('name', 'project');
+    project.classList.add('form-task-project');
 
     let priority_label = document.createElement('label');
     priority_label.setAttribute('for', 'priority')
@@ -137,7 +148,7 @@ function create_task_popup(){
     date.setAttribute('name', 'date');
     date.required = true;
 
-    form.append(name_label, name, priority_label, priority, date_label, date);
+    form.append(name_label, name, project_label, project, priority_label, priority, date_label, date);
     form.append(close_buttton(), submit_button());
 
     add_submit(form);
@@ -193,11 +204,12 @@ function add_task(e){
     let container = document.querySelector('.task-container');
     let add_button = document.querySelector('.add-btn-container');
 
-    let newTask = new taskConstructor(formProps.name, formProps.priority, formProps.date, "home", uniqueId(), false);
+    let newTask = new taskConstructor(formProps.name, formProps.priority, formProps.date, formProps.project, uniqueId(), false);
 
     container.insertBefore(createTask(newTask), add_button);
     saveTask(newTask);
 
+    changeProjects();
     reset_form();
     close_form();
 }
