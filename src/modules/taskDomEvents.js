@@ -1,5 +1,5 @@
 import deleteIcon from './imgs/delete.svg';
-import changeProjects from './sidebar';
+import {changeProjects} from './sidebar';
 
 function createTask(task){
     let task_bar = document.createElement("li");
@@ -182,19 +182,45 @@ function editName(id, change){
 }
 
 function editProject(id, change){
-    let projects = []
+    if(id < 0){
+        return;
+    }
+    let projects = [];
+    if(localStorage.getItem('project')){    
+        projects = JSON.parse(localStorage.getItem('project')); 
+    }
+    let tasks = [];
+    let temp;
+    let pushed = false;
+    for(let i = 0; i < projects.length; i++){
+        for(let j = 0; j < projects[i].length; j++){
+            if(projects[i][j]._id == id){
+                projects[i][j]._project = change;
+                temp =  projects[i][j];
+                remove(projects[i][j]._id);
+            }
+        }
+    }
+
     if(localStorage.getItem('project')){    
         projects = JSON.parse(localStorage.getItem('project')); 
     }
 
     for(let i = 0; i < projects.length; i++){
-        for(let j = 0; j < projects[i].length; j++){
-            if(projects[i][j]._id == id){
-                projects[i][j]._project = change;
-            }
+        console.log(project[i]);
+        if(temp._project === project[i][0]._project){
+            project[i].push(temp);
+            pushed = true;
         }
     }
+
+    if(!pushed && temp){
+        tasks.push(temp);
+        projects.push(tasks);
+    }
+
     localStorage.setItem('project', JSON.stringify(projects));
+    changeProjects();
 }
 
 function editPriority(id, change){

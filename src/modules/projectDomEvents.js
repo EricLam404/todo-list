@@ -209,7 +209,7 @@ function add_task(e){
     let container = document.querySelector('.task-container');
     let add_button = document.querySelector('.add-btn-container');
 
-    let newTask = new taskConstructor(formProps.name, formProps.priority, formProps.date, formProps.project, uniqueId(), false);
+    let newTask = new taskConstructor(formProps.name, formProps.priority, formProps.date, formProps.project ? formProps.project : "home" , uniqueId(), false);
 
     container.insertBefore(createTask(newTask), add_button);
     saveTask(newTask);
