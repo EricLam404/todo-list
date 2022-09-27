@@ -1,6 +1,8 @@
 # To-Do List
 Created a task organizer modeled after a To-Do list.
 
+## Live Link
+[To-Do List](https://ericlam404.github.io/todo-list/)
 
 # Description
 
