@@ -1,5 +1,5 @@
 import deleteIcon from './imgs/delete.svg';
-import changeProjects from './changeProjects';
+import changeProjects from './sidebar';
 
 function createTask(task){
     let task_bar = document.createElement("li");

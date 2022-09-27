@@ -5,7 +5,7 @@ import submitIcon from "./imgs/submit.svg";
 import createTask from "./taskDomEvents";
 import taskConstructor from "./task";
 import saveTask from "./storage";
-import changeProjects from "./changeProjects";
+import {changeProjects} from "./sidebar";
 
 function createProject(){
     let container = document.createElement('div');
@@ -34,7 +34,8 @@ function sort_container(){
             container.classList.remove("descending");
             container.classList.add("ascending");
             tasksArr.sort(compareDatesDescending);
-        }else{
+        }
+        else{
             container.classList.remove("ascending");
             container.classList.add("descending");
             tasksArr.sort(compareDatesAscending);
@@ -44,7 +45,11 @@ function sort_container(){
         for(let i = 0; i < tasksArr.length; i++){
             container.append(tasksArr[i]);
         }
-        container.append(add_task_button());
+
+        let home = document.querySelector('.home');
+        if(home.classList[1] == "active"){
+            container.append(add_task_button());
+        }
     }); 
 
     return container;
@@ -237,4 +242,4 @@ function uniqueId(){
     return dateString + randomness;
 };
 
-export default createProject;
+export {createProject, add_task_button};

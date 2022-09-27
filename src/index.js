@@ -1,6 +1,6 @@
 import './style.css';
-import createProject from './modules/projectDomEvents';
-import createSidebar from './modules/sidebar';
+import {createProject} from './modules/projectDomEvents';
+import {createSidebar} from './modules/sidebar';
 import createHeader from './modules/header';
 import load from './modules/load'
 
