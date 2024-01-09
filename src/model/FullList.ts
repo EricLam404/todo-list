@@ -1,6 +1,7 @@
 import ListItem from "./ListItem";
 
-interface List {
+export interface List {
+    id: String,
     list: ListItem[],
     load(): void,
     save(): void,
@@ -13,17 +14,32 @@ export default class FullList implements List {
 
     static instance: FullList = new FullList()
 
-    private constructor( private _list: ListItem[] = [] ) {}
+    constructor( 
+        private _id = "",
+        private _list: ListItem[] = []
+    ) {}
     
+    get id(): string {
+        return this._id
+    }
+
+    set id(id: string) {
+        this._id = id
+    }
+
     get list(): ListItem[] {
         return this._list;
+    }
+
+    set list(list: ListItem[]){
+        this._list = list;
     }
 
     load(): void {
         const storedList: string | null = localStorage.getItem("list");
         if(typeof storedList != "string") return
 
-        const parsedList: { _id: string, _item: string, _checked: boolean }[] = JSON.parse(storedList);
+        const parsedList: { _id: string, _item: string, _checked: boolean}[] = JSON.parse(storedList);
 
         parsedList.forEach(itemObj => {
             const newListItem = new ListItem(itemObj._id, itemObj._item, itemObj._checked);
