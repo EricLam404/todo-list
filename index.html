@@ -22,22 +22,22 @@
       </div>
       <div id="tasks" class="col-span-3">
         <section class="p-4">
-          <form class="p-4 border-2 border-blue-200 flex gap-2 items-center justify-center rounded-md flex-col md:flex-row md:g-6" id="itemEntryForm">
+          <form class="p-4 border-2 border-blue-200 flex gap-2 items-center justify-center rounded-md flex-col sm:flex-row md:g-6" id="itemEntryForm">
             <label for="newItem" class="hidden">Enter a new to do item</label>
-            <input class="flex-auto p-1 md:p-2" name="newItem" id="newItem" type="text" maxlength="40" autocomplete="off"
+            <input class=" sm:w-full md:w-[30%] p-1 md:p-2" name="newItem" id="newItem" type="text" maxlength="40" autocomplete="off"
               placeholder="Add item" required/>
             <label for="projectName" class="hidden">Enter the project name</label>
-            <input class="flex-auto p-1 md:p-2" name="projectName" id="projectName" type="text" maxlength="40" autocomplete="on"
+            <input class=" sm:w-full md:w-[20%] p-1 md:p-2" name="projectName" id="projectName" type="text" maxlength="40" autocomplete="on"
               placeholder="Enter project name" required/>
-            <label for="priorityLevel" class="text-center">Priority level</label>
-            <select class="flex-auto p-1 md:p-2" name="priorityLevel">
+            <label for="priorityLevel" class="text-center  sm:w-full md:w-[10%]">Priority level</label>
+            <select class=" sm:w-full md:w-[15%] p-1 md:p-2" name="priorityLevel">
               <option value="low">Low</option>
               <option value="medium">Medium</option>
               <option value="high">High</option>
             </select>
             <label for="dueDate" class="hidden">Enter due date</label>
-            <input class="flex-auto p-1 min-w-8 md:p-2" name="dueDate" type="date" required/>
-            <button id="addItem" class="items-center justify-center p-2 border rounded-full w-10 hover:bg-blue-50 lg:w-20 lg:border-2" title="Add new item" aria-label="Add new item to list">
+            <input class="flex-auto p-1 sm:w-full md:w-[20%] md:p-2" name="dueDate" type="date" required/>
+            <button id="addItem" class="items-center justify-center p-2 border rounded-full  sm:w-full md:w-[5%] hover:bg-blue-50 lg:w-20 lg:border-2" title="Add new item" aria-label="Add new item to list">
               +
             </button>
           </form>
@@ -46,7 +46,7 @@
           <button class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg" id="clearItemsButton">
             Clear
           </button>          
-          <ul class="w-full" id="listItems">
+          <ul class="w-full divide-y divide-blue-200 " id="listItems">
           </ul>
         </section>
       </div>

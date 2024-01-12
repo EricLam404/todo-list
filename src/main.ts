@@ -7,6 +7,13 @@ const initApp = (): void => {
   const fullList = FullList.instance;
   const template = ListTemplate.instance;
 
+  const addDemo = () => {
+    fullList.addItem(new ListItem("1", "Clean the sink", "demo", "medium", "2022-09-28"));
+    fullList.addItem(new ListItem("2", "Wash the laundry", "demo", "medium", "2022-09-25"));
+    fullList.addItem(new ListItem("3", "Fix shower head", "demo", "high", "2022-10-01"));
+    fullList.addItem(new ListItem("4", "Learn react", "demo", "high", "2022-10-05"));
+  }
+
   const renderProjectList = () => {
     const projects = document.getElementById("projectList") as HTMLUListElement;
     projects.innerHTML = '';
@@ -69,8 +76,13 @@ const initApp = (): void => {
   })
 
   fullList.load();
+  if(!localStorage.getItem("visited")){
+    localStorage.setItem("visited", "true");
+    addDemo();
+  }
   template.render(fullList, '');
   renderProjectList();
+
 }
 
 document.addEventListener('DOMContentLoaded', initApp);

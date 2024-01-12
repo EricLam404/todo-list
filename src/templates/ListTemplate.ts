@@ -27,7 +27,7 @@ export default class ListTemplate implements DOMList {
 
         list.forEach(item => {
             const li = document.createElement("li") as HTMLLIElement;
-            li.className = "w-full p-4 border-2 border-blue-200 flex gap-2 items-center justify-center rounded-md flex-col md:flex-row md:g-6";
+            li.className = "w-full p-4 flex gap-2 items-center rounded-md flex-col md:flex-row md:g-6";
             
             const check = document.createElement('input') as HTMLInputElement;
             check.type = "checkbox";
@@ -45,25 +45,36 @@ export default class ListTemplate implements DOMList {
             const name = document.createElement("label") as HTMLLabelElement;
             name.htmlFor = item.id;
             name.textContent = item.item;
-            name.classList.add('flex-auto');
+            name.classList.add('w-[40%]');
             if(item.checked)  name.classList.add("line-through");
             li.append(name);
 
             const projectName = document.createElement("label") as HTMLLabelElement;
             projectName.htmlFor = item.id;
             projectName.textContent = item.project;
-            projectName.classList.add('flex-auto')
+            projectName.classList.add('w-[20%]')
             li.append(projectName);
 
             const priority = document.createElement("label") as HTMLLabelElement;
             priority.htmlFor = item.id;
             priority.textContent = item.priority;
-            li.append(priority);
+
+            const priorityBox = document.createElement("div") as HTMLDivElement;
+            const color = item.priority == "low" ? "green" : item.priority == "medium" ? "orange" : "red";
+            priorityBox.classList.add('border-2', `text-${color}-300` ,`border-${color}-300`, "flex", "items-center", "justify-center", "p-2" , "w-full", "md:w-[20%]", "lg:w-[10%]");
+            priorityBox.append(priority);
+            li.append(priorityBox);
+
+            const dueDate = document.createElement("label") as HTMLLabelElement;
+            dueDate.htmlFor = item.id;
+            dueDate.textContent = item.dueDate;
+            dueDate.classList.add('w-[20]%');
+            li.append(dueDate);
 
             const button = document.createElement("button") as HTMLButtonElement;
             button.className = 'button';
             button.textContent = 'X';
-            button.classList.add("border-2", "rounded-full", "px-2", "py-1", "hover:bg-blue-100");
+            button.classList.add("border-2", "rounded-full", "px-2", "py-1", "hover:bg-blue-100", "w-[10%]");
             li.append(button);
 
             button.addEventListener('click', () => {
