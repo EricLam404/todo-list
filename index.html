@@ -1,9 +1,57 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Development</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"><script defer src="main.js"></script></head>
-  <body>
-  </body>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My List</title>
+  <link rel="stylesheet" href="/src/css/style.css">
+  <script type="module" crossorigin src="/assets/index-WC9VtM7X.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-uTMGXpST.css">
+</head>
+<body class="h-screen w-screen">
+    <header class="bg-blue-300 p-6 font-bold text-white text-4xl w-full">
+      To-Do List
+    </header>
+    <main class="md:grid grid-cols-4 h-full sm:flex">
+      <div id="sidebar" class="col-span-1 bg-blue-100 min-w-[100px] flex flex-col items-center p-5 text-2xl font-bold text-left w-full">
+        <div class="p-4 w-full cursor-pointer hover:bg-blue-200" id="home">Home</div>
+        <div class="p-4 w-full">Projects</div>
+        <ul class="p-4 w-full ml-8" id="projectList">
+        </ul>
+      </div>
+      <div id="tasks" class="col-span-3">
+        <section class="p-4">
+          <form class="p-4 border-2 border-blue-200 flex gap-2 items-center justify-center rounded-md flex-col sm:flex-row md:g-6" id="itemEntryForm">
+            <label for="newItem" class="hidden">Enter a new to do item</label>
+            <input class=" sm:w-full md:w-[30%] p-1 md:p-2" name="newItem" id="newItem" type="text" maxlength="40" autocomplete="off"
+              placeholder="Add item" required/>
+            <label for="projectName" class="hidden">Enter the project name</label>
+            <input class=" sm:w-full md:w-[20%] p-1 md:p-2" name="projectName" id="projectName" type="text" maxlength="40" autocomplete="on"
+              placeholder="Enter project name" required/>
+            <label for="priorityLevel" class="text-center  sm:w-full md:w-[10%]">Priority level</label>
+            <select class=" sm:w-full md:w-[15%] p-1 md:p-2" name="priorityLevel">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+            <label for="dueDate" class="hidden">Enter due date</label>
+            <input class="flex-auto p-1 sm:w-full md:w-[20%] md:p-2" name="dueDate" type="date" required/>
+            <button id="addItem" class="items-center justify-center p-2 border rounded-full  sm:w-full md:w-[5%] hover:bg-blue-50 lg:w-20 lg:border-2" title="Add new item" aria-label="Add new item to list">
+              +
+            </button>
+          </form>
+        </section>
+        <section class="w-full flex flex-col items-center p-4">
+          <button class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg" id="clearItemsButton">
+            Clear
+          </button>          
+          <ul class="w-full divide-y divide-blue-200 " id="listItems">
+          </ul>
+        </section>
+      </div>
+  </main>
+</body>
+
 </html>
